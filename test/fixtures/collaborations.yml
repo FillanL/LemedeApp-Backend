@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  campaign_id: 
+  collab_title: MyString
+
+two:
+  user_id: 
+  campaign_id: 
+  collab_title: MyString
