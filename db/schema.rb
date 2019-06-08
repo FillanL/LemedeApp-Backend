@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_221228) do
     t.string "location"
     t.string "description"
     t.string "title"
+    t.integer "amount_funded", default: 0
     t.integer "duration"
     t.boolean "goal_achieved", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_221228) do
   create_table "funded_campaigns", force: :cascade do |t|
     t.integer "funder_id"
     t.integer "campaign_id"
+    t.integer "donated_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_221228) do
 
   create_table "users", force: :cascade do |t|
     t.integer "age"
-    t.integer "account_balance"
+    t.integer "account_balance", default: 0
     t.string "password_digest"
     t.string "username"
     t.string "bio"

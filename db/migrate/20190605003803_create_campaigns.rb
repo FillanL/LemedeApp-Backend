@@ -8,6 +8,7 @@ class CreateCampaigns < ActiveRecord::Migration[6.0]
       t.string :location
       t.string :description
       t.string :title
+      t.integer :amount_funded, default: 0
       t.integer :duration
       t.boolean :goal_achieved, default: false
 

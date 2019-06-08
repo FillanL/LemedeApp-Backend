@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
 
     # has_many :campaigns, class_name: "Campaign", foreign_key: "creator_id"
     # has_many :project_funders, class_name: "Campaign", foreign_key: "funder_id"
