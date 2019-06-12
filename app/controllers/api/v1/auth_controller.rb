@@ -20,11 +20,12 @@ class Api::V1::AuthController < ApplicationController
         token = request.headers['Authentication']
         # byebug
         begin 
-            decode = JWT.decode(token,ENV[SECRET_KEY], true ,{algorithm:'HS256'}).first["id"]
+            decode = JWT.decode(token,ENV["SECRET_KEY"], true ,{algorithm:'HS256'}).first["id"]
             # in case of nil
         rescue JWT::DecodeError
             return nil
         end
+        # byebug
         
         current = user ||= User.find_by(id: decode)
         # byebug
