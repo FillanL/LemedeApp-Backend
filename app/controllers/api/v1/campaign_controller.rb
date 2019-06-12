@@ -1,4 +1,6 @@
 class Api::V1::CampaignController < ApplicationController
+  before_action :find_campaign, only: [:show, :update,:delete]
+
   def index
     projects = Campaign.all
 
@@ -11,22 +13,26 @@ class Api::V1::CampaignController < ApplicationController
   end
 
   def show
+    # byebug
+    render json: find_campaign
   end
 
   def create
     
     # byebug
-    campaign = Campaign.create(campaign_params)
-    campaign.funding_goal = campaign.funding_goal.to_i
-    campaign.creator_id = 1
+   params["campaign"]["creator_id"] = decode_token(params["creator_id"])
 
-    campaign.save
-    # byebug
+   
+   campaign = Campaign.create(campaign_params)
+   
+   campaign.funding_goal = campaign.funding_goal.to_i
 
-    render json: campaign
+    render json: CampaignSerializer.new(campaign)
   end
 
   def update
+    # render json: find_campaign
+
   end
 
   def delete
@@ -34,6 +40,11 @@ class Api::V1::CampaignController < ApplicationController
 
 private
   def campaign_params
-    params.require(:campaign).permit(:title,:category,:location,:description,:funding_goal)
+    params.require(:campaign).permit(:title,:category,:location,:description,:funding_goal,:creator_id)
+ 
+  end
+
+  def find_campaign
+    campaign = Campaign.find(params[:id])
   end
 end

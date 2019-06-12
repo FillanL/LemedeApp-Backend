@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :first_name, :location, :last_name, :profession
+  attributes :id, :username, :first_name, :location, :last_name, :profession, :account_balance
 
 
   # add collab to project

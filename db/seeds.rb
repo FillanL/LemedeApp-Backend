@@ -9,7 +9,7 @@
         bio: "some stuff",
         profession:"developer",
         age: 23,
-        account_balance:2332
+        account_balance: 2332
         )
 end
 

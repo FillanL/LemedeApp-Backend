@@ -1,9 +1,9 @@
 class Api::V1::UsersController < ApplicationController
-    # beforre_action: 
+    before_action :find_user, only: [:show, :update, :delete]
 
     def index
-        user = User.all
-        render json: user
+        users = User.all
+        render json: users
     end
 
     def create
@@ -12,6 +12,12 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def update
+        user = User.find(params[:id])
+
+        newVal = user.account_balance + params[:account_balance].to_i
+        user = user.update(account_balance: newVal)
+        # byebug
+        render json: User.find(params[:id])
     end
 
     def delete
@@ -23,6 +29,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def find_user
-        User.find(params.require(:user).permit(:id))
+       user = User.find(params[:id])
     end
 end
