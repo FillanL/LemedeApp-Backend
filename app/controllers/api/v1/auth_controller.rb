@@ -1,9 +1,9 @@
 class Api::V1::AuthController < ApplicationController
 
     def log_in
-        # byebug
-
+        
         user = User.find_by(username: params[:auth]["username"])
+        # byebug
 
         if user && user.authenticate(params[:auth]["password"])
             token = get_token({id: user.id})
@@ -29,9 +29,6 @@ class Api::V1::AuthController < ApplicationController
         
         current = user ||= User.find_by(id: decode)
         # byebug
-        
-
-        
             # render json: {...current, except: :password_digest}
        render json: current
     end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/loggedIn', to: 'auth#show'
     end
   end
+  post '/back_campaign', to: 'user_campaigns#back_campaign' 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
