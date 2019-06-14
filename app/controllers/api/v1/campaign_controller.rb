@@ -32,15 +32,24 @@ class Api::V1::CampaignController < ApplicationController
 
   def update
     # render json: find_campaign
+    campaign = Campaign.find(params[:id])
+    campaign.update(update_campaign_params)
+    # byebug
 
+    render json: CampaignSerializer.new(campaign)
   end
 
   def delete
+    byebug
   end
 
 private
   def campaign_params
     params.require(:campaign).permit(:title,:category,:location,:description,:funding_goal,:creator_id)
+ 
+  end
+  def update_campaign_params
+    params.require(:updatedCampaign).permit(:title,:category,:location,:description,:funding_goal)
  
   end
 
