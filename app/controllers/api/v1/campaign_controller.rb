@@ -39,8 +39,12 @@ class Api::V1::CampaignController < ApplicationController
     render json: CampaignSerializer.new(campaign)
   end
 
-  def delete
-    byebug
+  def destroy
+    # byebug
+    campaign = Campaign.find(params[:id].to_i)
+    campaign.destroy
+
+    render json: Campaign.all
   end
 
 private
