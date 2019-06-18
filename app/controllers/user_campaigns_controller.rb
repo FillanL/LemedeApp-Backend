@@ -16,6 +16,13 @@ class UserCampaignsController < ApplicationController
 
         campaign = campaign.update(amount_funded: campaign_funded_amount)
 
+        campaign = Campaign.find(params[:campaign_id])
+        
+        if campaign.funding_goal >= campaign.amount_funded
+            campaign.goal_achieved = true
+            campaign.save
+        end
+
 # byebug
         funded = FundedCampaign.create(
             funder_id:funded_campaigns[:user_id],

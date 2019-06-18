@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :first_name, :location, :last_name, :profession, :account_balance
+  attributes :id, :username, :first_name, :location, :last_name, :profession, :account_balance, :total_donated
 
 
   # add collab to project
@@ -10,4 +10,16 @@ class UserSerializer < ActiveModel::Serializer
   has_many :funded_campaigns, class_name: "FundedCampaign", foreign_key: "funder_id"
   # when creating a campaign
   has_many :campaigns, class_name: "Campaign", foreign_key: "creator_id"
+
+
+  def total_donated
+    # user = User.find(self.id)
+array = []
+    FundedCampaign.all.map do |a|
+      if a["funder_id"] === self.object.id
+        array <<  a["donated_amount"]
+      end
+    end
+    return array.reduce(:+)
+  end
 end

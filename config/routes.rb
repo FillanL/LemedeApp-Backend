@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   post '/back_campaign', to: 'user_campaigns#back_campaign' 
+  post '/favorite', to: 'favorite_list#favorite' 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
+        user = User.create_or_find_by(user_params)
         # byebug
     end
 

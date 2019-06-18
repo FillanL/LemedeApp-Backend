@@ -42,6 +42,15 @@ class Api::V1::CampaignController < ApplicationController
   def destroy
     # byebug
     campaign = Campaign.find(params[:id].to_i)
+
+    # return funds to users if campaign is not completed
+    # if !campaign.goal_achieved
+    #   campaign.funded_campaigns.map do |a| 
+    #         user = User.find(a.funder_id)
+    #         user.account_balance = user.account_balance + a.donated_amount
+    #         user.save
+    #   end
+    # end
     campaign.destroy
 
     render json: Campaign.all

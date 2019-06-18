@@ -10,4 +10,8 @@ class Campaign < ApplicationRecord
         end
     end
 
+    # def campaign_collaborators
+    #     User.find(object.campaign_collaborators.collaborator_id)
+    # end
+
 end
