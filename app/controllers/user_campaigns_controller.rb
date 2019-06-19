@@ -35,7 +35,6 @@ class UserCampaignsController < ApplicationController
     end
 
     def featured
-        # byebug
         
         user = User.find(params[:user_id])
         user.account_balance = user.account_balance - 100
@@ -46,10 +45,10 @@ class UserCampaignsController < ApplicationController
          campaign.save
         # byebug
 
-        # campaign = Campaign.find(params[:campaign_id])
-        # user = User.find(params[:user_id])
+        campaign = Campaign.find(params[:campaign_id])
+        user = User.find(params[:user_id])
 
-         render json: {campaign: CampaignSerializer.new(Campaign.find(params[:campaign_id])),user: User.find(params[:user_id])}
+         render json: {campaign: CampaignSerializer.new(campaign), user: UserSerializer.new(user)}
     end
 
     private
