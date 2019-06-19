@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
+        user = User.create_or_find_by(user_params)
         # byebug
     end
 
@@ -20,7 +20,12 @@ class Api::V1::UsersController < ApplicationController
         render json: User.find(params[:id])
     end
 
-    def delete
+    def destroy
+        # byebug
+        user = User.find(params[:id].to_i)
+        user.destroy
+        # byebug
+        render json: CampaignSerializer.new(campaign)
     end
 
     private
