@@ -30,7 +30,7 @@ class UserCampaignsController < ApplicationController
             campaign_id: funded_campaigns[:campaign_id]
             )
 # byebug
-        render json: {campaign: CampaignSerializer.new(Campaign.find(params[:campaign_id])),user: User.find(params[:user_id])}
+        render json: {campaign: CampaignSerializer.new(Campaign.find(params[:campaign_id])),user: UserSerializer.new(User.find(params[:user_id]))}
         
     end
 
@@ -49,6 +49,7 @@ class UserCampaignsController < ApplicationController
         user = User.find(params[:user_id])
 
          render json: {campaign: CampaignSerializer.new(campaign), user: UserSerializer.new(user)}
+         
     end
 
     private
