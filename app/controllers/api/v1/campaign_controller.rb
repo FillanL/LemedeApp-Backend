@@ -24,6 +24,11 @@ class Api::V1::CampaignController < ApplicationController
 
    
    campaign = Campaign.create(campaign_params)
+
+   if campaign.campaign_img === ""
+      campaign.campaign_img = "https://images.unsplash.com/photo-1528873981-36c6afde7b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+      campaign.save
+   end
    
    campaign.funding_goal = campaign.funding_goal.to_i
 
@@ -58,11 +63,11 @@ class Api::V1::CampaignController < ApplicationController
 
 private
   def campaign_params
-    params.require(:campaign).permit(:title,:category,:location,:description,:funding_goal,:creator_id)
+    params.require(:campaign).permit(:title,:category,:location,:description,:funding_goal,:creator_id, :campaign_img)
  
   end
   def update_campaign_params
-    params.require(:updatedCampaign).permit(:title,:category,:location,:description,:funding_goal)
+    params.require(:updatedCampaign).permit(:title,:category,:location,:description,:funding_goal, :campaign_img)
  
   end
 

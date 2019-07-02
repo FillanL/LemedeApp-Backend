@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :profession
       t.string :first_name
       t.string :last_name
+      t.string :user_img, default:"https://images.unsplash.com/photo-1549378657-491f8e0456ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 
       t.timestamps
     end

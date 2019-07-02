@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_221228) do
     t.string "title"
     t.integer "amount_funded", default: 0
     t.integer "duration"
+    t.string "campaign_img", default: "https://images.unsplash.com/photo-1528873981-36c6afde7b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
     t.boolean "goal_achieved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_221228) do
     t.string "profession"
     t.string "first_name"
     t.string "last_name"
+    t.string "user_img", default: "https://images.unsplash.com/photo-1549378657-491f8e0456ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

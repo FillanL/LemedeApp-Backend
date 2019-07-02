@@ -1,5 +1,5 @@
 class CampaignSerializer < ActiveModel::Serializer
-  attributes :id,:title,:funding_goal,:goal_achieved, :description,:location,:featured, :category, :duration, :amount_funded
+  attributes :id,:title, :campaign_img, :funding_goal,:goal_achieved, :description,:location,:featured, :category, :duration, :amount_funded
 
   belongs_to :creator, class_name: "User"
   has_many :favorite_lists
