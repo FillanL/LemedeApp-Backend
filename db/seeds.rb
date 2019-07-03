@@ -16,10 +16,10 @@ campaign_imgs = ["https://images.unsplash.com/photo-1507654304600-18d902b183b4?i
     User.create(
         first_name: Faker::Name.first_name, 
         last_name: Faker::Name.last_name ,
-        username: Faker::Superhero.name,
+        username: Faker::Internet.user_name,
         password: "123",
         location: Faker::Address.state,
-        bio: "some stuff",
+        bio: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit corporis blanditiis corrupti numquam voluptate hic officia doloremque perspiciatis amet, tenetur perferendis error repudiandae aliquam veritatis vel voluptatem, expedita cupiditate repellat. Nemo quasi laborum, quae numquam omnis magnam molestiae est incidunt eum",
         profession:"developer",
         age: 23,
         account_balance: 2332
@@ -65,7 +65,7 @@ User.create(
     username: "admin",
     password: "123",
     location: Faker::Address.state,
-    bio: "ownerrr",
+    bio: "creator",
     profession:"developer",
     age: 21,
     account_balance: 100
